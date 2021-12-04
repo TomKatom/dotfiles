@@ -34,6 +34,7 @@ set visualbell
 set mouse=a
 set title
 set background=dark
+set term=screen-256color
 
 """ MISC
 set autoread
