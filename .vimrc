@@ -22,3 +22,16 @@ set linebreak
 set scrolloff=1
 syntax enable
 set wrap
+
+""" UI Settings
+set laststatus=2
+set wildmenu
+set ruler
+set tabpagemax=50
+set number relativenumber
+set noerrorbells
+set visualbell
+set mouse=a
+set title
+set background=dark
+
