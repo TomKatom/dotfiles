@@ -22,6 +22,7 @@ set linebreak
 set scrolloff=1
 syntax enable
 set wrap
+set cursorline
 
 """ UI Settings
 set laststatus=2
@@ -45,4 +46,9 @@ set history=1000
 set nomodeline
 set spell
 set noswapfile
+set nocompatible
+filetype on
+filetype plugin on
+filetype indent on
+filetype on
 
