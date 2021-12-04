@@ -10,3 +10,7 @@ set hlsearch
 set ignorecase
 set incsearch
 set smartcase
+
+""" Performance Optimizations
+set complete-=i
+set lazyredraw
