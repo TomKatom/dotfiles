@@ -26,6 +26,7 @@ set cursorline
 
 """ UI Settings
 set laststatus=2
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 set wildmenu
 set ruler
 set tabpagemax=50
@@ -55,7 +56,6 @@ filetype on
 filetype plugin on
 filetype indent on
 filetype on
-
 
 """ Mappings
 let mapleader = "<space>"
