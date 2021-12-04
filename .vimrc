@@ -58,7 +58,7 @@ filetype indent on
 filetype on
 
 """ Mappings
-let mapleader = "<space>"
+let mapleader = " "
 
 " Save file as sudo on files that require root permission
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
@@ -116,10 +116,30 @@ endfunction
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-" Helper Function
+" Return to last edit position when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
+
+" Trying to turn on persistent undo
+try
+    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
+" Select previously pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" Helper Functions
 function! HasPaste()
         if &paste
             return 'PASTE MODE  '
         endif
         return ''
+endfunction
+
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
 endfunction
