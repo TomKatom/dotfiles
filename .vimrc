@@ -35,3 +35,13 @@ set mouse=a
 set title
 set background=dark
 
+""" MISC
+set autoread
+set backspace=indent,eol,start
+set confirm
+set hidden
+set history=1000
+set nomodeline
+set spell
+set noswapfile
+
