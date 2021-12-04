@@ -34,6 +34,9 @@ set noerrorbells
 set visualbell
 set mouse=a
 set title
+set showcmd
+set showmode
+set showmatch
 set background=dark
 set term=screen-256color
 colorscheme sonokai
