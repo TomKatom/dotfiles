@@ -11,6 +11,7 @@ PACKAGES=(
     hypr
     kitty
     mako
+    qt
     systemd
     waybar
 )

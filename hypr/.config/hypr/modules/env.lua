@@ -11,4 +11,5 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Toolkits: prefer native Wayland, fall back to X11
 hl.env("QT_QPA_PLATFORM", "wayland;xcb", true)
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1", true)
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct", true)
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto", true)
