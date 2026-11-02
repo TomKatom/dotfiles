@@ -7,6 +7,7 @@ cd "$(dirname "$(realpath "$0")")"
 # Stow packages (top-level dirs of this repo) to link into $HOME
 PACKAGES=(
     hypr
+    mako
     systemd
 )
 
