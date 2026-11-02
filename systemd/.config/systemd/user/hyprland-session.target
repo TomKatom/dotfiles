@@ -1,0 +1,14 @@
+[Unit]
+Description=Hyprland session
+Documentation=man:systemd.special(7)
+# Started from hyprland.lua once the Wayland env is exported.
+# BindsTo: stopping this target tears down graphical-session.target and every
+# service that is PartOf it.
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
+Before=graphical-session.target
+# Run /etc/xdg/autostart entries (nm-applet, blueman-applet, ...).
+# The generator respects OnlyShowIn/NotShowIn, so GNOME-only entries are skipped.
+Wants=xdg-desktop-autostart.target
+Before=xdg-desktop-autostart.target
