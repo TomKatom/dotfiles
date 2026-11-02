@@ -12,7 +12,9 @@ Each top-level directory is a stow package that mirrors `$HOME`:
 | Package   | Contents                                                           |
 | --------- | ------------------------------------------------------------------ |
 | `hypr`    | Hyprland (Lua config + modules), hypridle, hyprlock, hyprpaper, hyprsunset |
+| `mako`    | Notification daemon                                                |
 | `systemd` | User units (`cliphist.service`, `hyprland-session.target`)         |
+| `waybar`  | Status bar (`config.jsonc`, `style.css`)                           |
 
 `.stowrc` sets `--target=~` and `--no-folding`, so only files are symlinked and
 directories are real.

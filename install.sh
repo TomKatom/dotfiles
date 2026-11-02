@@ -9,6 +9,7 @@ PACKAGES=(
     hypr
     mako
     systemd
+    waybar
 )
 
 # User services started with the graphical session.
