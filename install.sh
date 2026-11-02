@@ -8,6 +8,7 @@ cd "$(dirname "$(realpath "$0")")"
 PACKAGES=(
     fuzzel
     hypr
+    kitty
     mako
     systemd
     waybar
