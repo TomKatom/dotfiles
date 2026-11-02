@@ -17,16 +17,19 @@ repos:
       - id: check-shebang-scripts-are-executable
       - id: detect-private-key
 
+  # Neither tool understands zsh; CI checks zsh/ with `zsh -n` instead.
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.11.0.1
     hooks:
       - id: shellcheck
+        exclude: ^zsh/
 
   - repo: https://github.com/scop/pre-commit-shfmt
     rev: v3.14.1-1
     hooks:
       - id: shfmt
         args: [--indent, "4", --diff]
+        exclude: ^zsh/
 
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
     rev: v1.7.12.25
