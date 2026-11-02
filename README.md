@@ -40,7 +40,7 @@ or service. Then log out and back in to start the session target.
 ## Development
 
 ```sh
-pipx install pre-commit   # or: pip install --user pre-commit
+uv tool install pre-commit
 pre-commit install
 pre-commit run --all-files
 ```
