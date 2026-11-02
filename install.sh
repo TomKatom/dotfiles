@@ -9,6 +9,7 @@ PACKAGES=(
     bat
     eza
     fuzzel
+    git
     gtk
     hypr
     kitty

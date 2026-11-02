@@ -13,6 +13,7 @@ Each top-level directory is a stow package that mirrors `$HOME`:
 | --------- | ------------------------------------------------------------------ |
 | `bat`     | `cat`/pager replacement (theme)                                    |
 | `eza`     | `ls` replacement (theme)                                           |
+| `git`     | Git pager settings (delta); identity stays in untracked `~/.gitconfig` |
 | `hypr`    | Hyprland (Lua config + modules), hypridle, hyprlock, hyprpaper, hyprsunset |
 | `mako`    | Notification daemon                                                |
 | `starship`| Shell prompt                                                       |

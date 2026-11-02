@@ -47,7 +47,7 @@ jobs:
       - name: Stow dry run
         run: |
           target="$(mktemp -d)"
-          stow --simulate --verbose --restow --no-folding --target="$target" bat eza hypr starship systemd zsh
+          stow --simulate --verbose --restow --no-folding --target="$target" bat eza git hypr starship systemd zsh
       - name: install.sh PACKAGES match top-level dirs
         run: |
           expected="$(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort)"
