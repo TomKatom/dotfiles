@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # gitleaks scans history
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - name: Run pre-commit hooks
+        run: |
+          pip install pre-commit
+          pre-commit run --all-files --show-diff-on-failure
+
+  repo-checks:
+    name: repo-checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install tools
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends stow lua5.4
+      - name: Lua syntax
+        run: find . -name '*.lua' -not -path './.git/*' -print0 | xargs -0 -n1 luac5.4 -p
+      - name: Stow dry run
+        run: |
+          target="$(mktemp -d)"
+          stow --simulate --verbose --restow --no-folding --target="$target" hypr systemd
+      - name: install.sh PACKAGES match top-level dirs
+        run: |
+          expected="$(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort)"
+          actual="$(sed -n '/^PACKAGES=(/,/^)/p' install.sh | sed '1d;$d' | tr -d ' ' | sort)"
+          diff <(echo "$expected") <(echo "$actual")
+      - name: systemd unit verify
+        run: |
+          find . -path ./.git -prune -o \( -name '*.service' -o -name '*.target' \) -print0 \
+            | xargs -0 systemd-analyze --user verify --no-pager || echo "::warning::systemd-analyze reported issues"
