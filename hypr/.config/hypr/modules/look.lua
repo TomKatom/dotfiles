@@ -1,6 +1,15 @@
 -- Layout and appearance.
 -- Performance-first baseline for the UHD 770: no blur, no shadows, short
--- animations. Colors are left at Hyprland defaults until we theme things.
+-- animations. Colors: Catppuccin Macchiato.
+
+local c = {
+    mauve    = "rgb(c6a0f6)",
+    red      = "rgb(ed8796)",
+    text     = "rgb(cad3f5)",
+    overlay0 = "rgb(6e738d)",
+    surface0 = "rgb(363a4f)",
+    crust    = "rgb(181926)",
+}
 
 hl.config({
     general = {
@@ -9,6 +18,28 @@ hl.config({
         gaps_out         = 8,
         border_size      = 2,
         resize_on_border = true,
+        col = {
+            active_border   = c.mauve,
+            inactive_border = c.overlay0,
+        },
+    },
+
+    group = {
+        col = {
+            border_active          = c.mauve,
+            border_inactive        = c.overlay0,
+            border_locked_active   = c.red,
+            border_locked_inactive = c.overlay0,
+        },
+        groupbar = {
+            text_color = c.text,
+            col = {
+                active          = c.mauve,
+                inactive        = c.surface0,
+                locked_active   = c.red,
+                locked_inactive = c.surface0,
+            },
+        },
     },
 
     decoration = {
@@ -27,6 +58,7 @@ hl.config({
         disable_hyprland_logo    = true,
         disable_splash_rendering = true,
         force_default_wallpaper  = 0,
+        background_color         = c.crust,
     },
 
     debug = {
