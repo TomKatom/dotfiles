@@ -17,6 +17,9 @@ SERVICES=(
     hyprpolkitagent.service
     waybar.service
     cliphist.service
+    hyprpaper.service
+    hypridle.service
+    hyprsunset.service
 )
 
 stow --restow "${PACKAGES[@]}"
