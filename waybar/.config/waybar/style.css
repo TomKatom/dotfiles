@@ -1,0 +1,123 @@
+@define-color rosewater #f4dbd6;
+@define-color flamingo #f0c6c6;
+@define-color pink #f5bde6;
+@define-color mauve #c6a0f6;
+@define-color red #ed8796;
+@define-color maroon #ee99a0;
+@define-color peach #f5a97f;
+@define-color yellow #eed49f;
+@define-color green #a6da95;
+@define-color teal #8bd5ca;
+@define-color sky #91d7e3;
+@define-color sapphire #7dc4e4;
+@define-color blue #8aadf4;
+@define-color lavender #b7bdf8;
+@define-color text #cad3f5;
+@define-color subtext0 #a5adcb;
+@define-color overlay0 #6e738d;
+@define-color surface0 #363a4f;
+@define-color surface1 #494d64;
+@define-color base #24273a;
+@define-color mantle #1e2030;
+@define-color crust #181926;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+  font-size: 13px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+tooltip {
+  background: @mantle;
+  border: 1px solid @surface1;
+  border-radius: 6px;
+  color: @text;
+}
+
+#workspaces,
+#window,
+#clock,
+#mpris,
+#pulseaudio,
+#network,
+#bluetooth,
+#cpu,
+#memory,
+#temperature,
+#idle_inhibitor,
+#tray {
+  background: @base;
+  border-radius: 6px;
+  padding: 0 10px;
+  margin: 0;
+}
+
+#workspaces {
+  padding: 0 4px;
+}
+
+#workspaces button {
+  background: transparent;
+  color: @subtext0;
+  padding: 0 8px;
+  margin: 3px 1px;
+  border-radius: 6px;
+}
+
+#workspaces button:hover {
+  background: @surface1;
+  color: @text;
+}
+
+#workspaces button.active {
+  background: @mauve;
+  color: @crust;
+}
+
+#workspaces button.urgent {
+  background: @red;
+  color: @crust;
+}
+
+#window {
+  color: @subtext0;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+}
+
+#clock { color: @lavender; }
+#mpris { color: @pink; }
+#pulseaudio { color: @blue; }
+#network { color: @sapphire; }
+#bluetooth { color: @sky; }
+#cpu { color: @green; }
+#memory { color: @yellow; }
+#temperature { color: @peach; }
+#idle_inhibitor { color: @overlay0; }
+
+#pulseaudio.muted,
+#network.disconnected,
+#bluetooth.off,
+#bluetooth.disabled,
+#mpris.paused {
+  color: @overlay0;
+}
+
+#temperature.critical {
+  background: @red;
+  color: @crust;
+}
+
+#idle_inhibitor.activated {
+  background: @yellow;
+  color: @crust;
+}
