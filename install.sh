@@ -10,6 +10,7 @@ PACKAGES=(
     mako
     systemd
     waybar
+    zsh
 )
 
 # User services started with the graphical session.

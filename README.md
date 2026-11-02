@@ -15,6 +15,7 @@ Each top-level directory is a stow package that mirrors `$HOME`:
 | `mako`    | Notification daemon                                                |
 | `systemd` | User units (`cliphist.service`, `hyprland-session.target`)         |
 | `waybar`  | Status bar (`config.jsonc`, `style.css`)                           |
+| `zsh`     | Shell config (`.zshrc`, Catppuccin prompt)                         |
 
 `.stowrc` sets `--target=~` and `--no-folding`, so only files are symlinked and
 directories are real.
