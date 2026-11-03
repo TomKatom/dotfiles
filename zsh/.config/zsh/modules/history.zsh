@@ -1,0 +1,6 @@
+HISTFILE=$ZSH_STATE_DIR/history
+HISTSIZE=50000
+SAVEHIST=50000
+
+setopt extended_history share_history hist_ignore_all_dups hist_ignore_space
+setopt hist_reduce_blanks hist_verify

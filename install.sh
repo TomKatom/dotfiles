@@ -6,14 +6,18 @@ cd "$(dirname "$(realpath "$0")")"
 
 # Stow packages (top-level dirs of this repo) to link into $HOME
 PACKAGES=(
+    bat
+    eza
     fuzzel
     gtk
     hypr
     kitty
     mako
     qt
+    starship
     systemd
     waybar
+    zsh
 )
 
 # User services started with the graphical session.

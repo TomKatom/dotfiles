@@ -11,10 +11,14 @@ Each top-level directory is a stow package that mirrors `$HOME`:
 
 | Package   | Contents                                                           |
 | --------- | ------------------------------------------------------------------ |
+| `bat`     | `cat`/pager replacement (theme)                                    |
+| `eza`     | `ls` replacement (theme)                                           |
 | `hypr`    | Hyprland (Lua config + modules), hypridle, hyprlock, hyprpaper, hyprsunset |
 | `mako`    | Notification daemon                                                |
+| `starship`| Shell prompt                                                       |
 | `systemd` | User units (`cliphist.service`, `hyprland-session.target`)         |
 | `waybar`  | Status bar (`config.jsonc`, `style.css`)                           |
+| `zsh`     | `~/.zshenv` (sets `ZDOTDIR`) + modular config in `~/.config/zsh`   |
 
 `.stowrc` sets `--target=~` and `--no-folding`, so only files are symlinked and
 directories are real.
@@ -23,6 +27,12 @@ directories are real.
 
 Requires `stow` plus the programs the configs reference (Hyprland, waybar,
 cliphist, hyprpaper, hypridle, hyprsunset, hyprpolkitagent, kitty, fuzzel, thunar).
+The shell needs:
+
+```sh
+sudo pacman -S --needed starship fzf zoxide eza bat fd ripgrep dust duf \
+    zsh-completions zsh-autosuggestions zsh-syntax-highlighting
+```
 
 ```sh
 git clone https://github.com/TomKatom/dotfiles.git ~/dotfiles

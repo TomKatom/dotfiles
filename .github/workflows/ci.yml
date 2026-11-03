@@ -39,13 +39,15 @@ jobs:
         with:
           persist-credentials: false
       - name: Install tools
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends stow lua5.4
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends stow lua5.4 zsh
       - name: Lua syntax
         run: find . -name '*.lua' -not -path './.git/*' -print0 | xargs -0 -n1 luac5.4 -p
+      - name: zsh syntax
+        run: find zsh -type f \( -name '*.zsh' -o -name '.zsh*' \) -print0 | xargs -0 -n1 zsh -n
       - name: Stow dry run
         run: |
           target="$(mktemp -d)"
-          stow --simulate --verbose --restow --no-folding --target="$target" hypr systemd
+          stow --simulate --verbose --restow --no-folding --target="$target" bat eza hypr starship systemd zsh
       - name: install.sh PACKAGES match top-level dirs
         run: |
           expected="$(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort)"
