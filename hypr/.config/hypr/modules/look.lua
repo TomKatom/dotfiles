@@ -50,6 +50,10 @@ hl.config({
 
     animations = { enabled = true },
 
+    render = {
+        direct_scanout = 2,  -- auto: only fullscreen content tagged as game/video
+    },
+
     dwindle = {
         preserve_split = true,  -- a split keeps its direction when resized
     },
