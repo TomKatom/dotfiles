@@ -1,7 +1,9 @@
 # CLAUDE.md
 
-This repo is the single source of truth for the configuration of Tom's workstation.
-If it isn't in this repo, it isn't part of the system.
+This repo is the single source of truth for the **rice** of Tom's workstation: the desktop
+look and user-level configuration. If a rice setting isn't in this repo, it isn't part of the rice.
+Per-PC kernel, disk, network and security tuning (sysctl, modprobe, udev, zram, makepkg, pacman,
+snapper, btrbk, crypttab, fstab, nftables, ...) is out of scope and managed manually on the machine.
 
 ## Machine
 
@@ -19,7 +21,7 @@ Used for C++ development, low-level research and general productivity.
 ## Desktop stack
 
 - **Login:** greetd + tuigreet, launches `start-hyprland` (no uwsm)
-- **Compositor:** Hyprland 0.56, configured in **Lua** (`~/.config/hypr/hyprland.lua`).
+- **Compositor:** Hyprland 0.57, configured in **Lua** (`~/.config/hypr/hyprland.lua`).
   `hyprland.conf`/hyprlang is deprecated since 0.55 — never write it.
   API reference: `/usr/share/hypr/stubs/hl.meta.lua`.
 - **Hypr tools:** hyprlock, hypridle, hyprpaper, hyprsunset, hyprpicker, hyprshutdown,
@@ -37,8 +39,8 @@ Used for C++ development, low-level research and general productivity.
 - **Color scheme:** [Catppuccin Macchiato](https://catppuccin.com/palette) — everything
   (compositor, lock screen, bar, launcher, notifications, terminal, GTK/Qt, editor, shell
   prompt) must use it. Use the official palette values; don't invent colors.
-- **Shell/editor:** zsh (no plugins yet), neovim (stock)
-- **Not installed yet:** QoL CLI tools (starship, fzf, zoxide, eza, bat, ...)
+- **Shell/editor:** zsh (zsh-autosuggestions, zsh-syntax-highlighting), neovim (stock)
+- **CLI tools:** starship, fzf, zoxide, eza, bat; git uses delta as pager
 
 ## Priorities
 
@@ -59,10 +61,12 @@ Used for C++ development, low-level research and general productivity.
 ## Rules
 
 ### Infrastructure as code
-- **No manual configuration on the machine without Tom's explicit approval.** Every change
-  (dotfiles, packages, services, system settings) is made through this repo and applied by
-  its scripts, so the machine can be rebuilt from it.
-- If something can only be done manually, stop and ask first, then capture it in the repo.
+- **No manual rice changes on the machine without Tom's explicit approval.** Every rice change
+  (dotfiles, themes, user services) is made through this repo and applied by its scripts, so
+  the rice can be rebuilt from it.
+- If a rice change can only be done manually, stop and ask first, then capture it in the repo.
+- **Per-PC system tuning is out of scope** for this repo, but still needs Tom's explicit
+  approval before touching it.
 
 ### Git workflow
 - Trunk-based. Trunk is `master`: protected, squash-merge only, never commit to it directly.
