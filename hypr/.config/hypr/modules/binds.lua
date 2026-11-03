@@ -23,7 +23,7 @@ hl.bind("Print",         hl.dsp.exec_cmd([[grim -g "$(slurp -d)" -t ppm - | satt
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd([[grim -t ppm - | satty --filename - ]] .. shot_out))
 
 -- Session ------------------------------------------------------------------
-hl.bind(key("Escape"),    hl.dsp.exec_cmd("loginctl lock-session"))  -- handled by hypridle (next step)
+hl.bind(key("Escape"),    hl.dsp.exec_cmd("loginctl lock-session"))  -- handled by hypridle
 hl.bind(key("SHIFT + M"), hl.dsp.exit())
 
 -- Windows ------------------------------------------------------------------
