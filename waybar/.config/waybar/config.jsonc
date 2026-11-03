@@ -18,6 +18,7 @@
     "cpu",
     "memory",
     "temperature",
+    "hyprland/language",
     "idle_inhibitor",
     "tray"
   ],
@@ -101,6 +102,10 @@
     "critical-threshold": 85,
     "format": "{icon} {temperatureC}°C",
     "format-icons": ["󱃃", "󰔏", "󱃂"]
+  },
+  "hyprland/language": {
+    "format-en": "󰌌 CM",
+    "format-he": "󰌌 HE"
   },
   "idle_inhibitor": {
     "format": "{icon}",
