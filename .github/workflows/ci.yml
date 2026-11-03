@@ -48,15 +48,16 @@ jobs:
         run: find . -name '*.lua' -not -path './.git/*' -print0 | xargs -0 -n1 luac5.4 -p
       - name: zsh syntax
         run: find zsh -type f \( -name '*.zsh' -o -name '.zsh*' \) -print0 | xargs -0 -n1 zsh -n
+      - name: Read install.sh PACKAGES
+        run: echo "PACKAGES=$(sed -n '/^PACKAGES=(/,/^)/p' install.sh | sed '1d;$d' | tr -d ' ' | sort | paste -sd' ')" >> "$GITHUB_ENV"
       - name: Stow dry run
         run: |
           target="$(mktemp -d)"
-          stow --simulate --verbose --restow --no-folding --target="$target" bat eza git hypr starship systemd zsh
+          stow --simulate --verbose --restow --no-folding --target="$target" $PACKAGES
       - name: install.sh PACKAGES match top-level dirs
         run: |
           expected="$(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort)"
-          actual="$(sed -n '/^PACKAGES=(/,/^)/p' install.sh | sed '1d;$d' | tr -d ' ' | sort)"
-          diff <(echo "$expected") <(echo "$actual")
+          diff <(echo "$expected") <(echo "$PACKAGES" | tr ' ' '\n')
       - name: systemd unit verify
         run: |
           find . -path ./.git -prune -o \( -name '*.service' -o -name '*.target' \) -print0 \
