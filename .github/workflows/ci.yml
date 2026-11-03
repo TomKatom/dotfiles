@@ -53,7 +53,8 @@ jobs:
       - name: Stow dry run
         run: |
           target="$(mktemp -d)"
-          stow --simulate --verbose --restow --no-folding --target="$target" $PACKAGES
+          read -ra to_stow <<< "$PACKAGES"
+          stow --simulate --verbose --restow --no-folding --target="$target" "${to_stow[@]}"
       - name: install.sh PACKAGES match top-level dirs
         run: |
           expected="$(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort)"
