@@ -23,6 +23,7 @@ Each top-level directory is a stow package that mirrors `$HOME`:
 | `starship`| Shell prompt                                                       |
 | `systemd` | User units (`cliphist.service`, `hyprland-session.target`)         |
 | `waybar`  | Status bar (`config.jsonc`, `style.css`)                           |
+| `xdg`     | `mimeapps.list` default applications |
 | `zsh`     | `~/.zshenv` (sets `ZDOTDIR`) + modular config in `~/.config/zsh`   |
 
 `.stowrc` sets `--target=~` and `--no-folding`, so only files are symlinked and
