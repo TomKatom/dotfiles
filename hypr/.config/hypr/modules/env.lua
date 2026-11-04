@@ -5,8 +5,12 @@
 -- that affects how apps render; skip it for compositor-only vars.
 
 -- Cursor
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+local cursor_theme = "catppuccin-macchiato-mauve-cursors"
+local cursor_size = "24"
+hl.env("XCURSOR_THEME", cursor_theme, true)
+hl.env("XCURSOR_SIZE", cursor_size, true)
+hl.env("HYPRCURSOR_THEME", cursor_theme, true)
+hl.env("HYPRCURSOR_SIZE", cursor_size, true)
 
 -- Toolkits: prefer native Wayland, fall back to X11
 hl.env("QT_QPA_PLATFORM", "wayland;xcb", true)
