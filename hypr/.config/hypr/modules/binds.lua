@@ -41,7 +41,7 @@ for k, dir in pairs(dirs) do
     hl.bind(key(k),               hl.dsp.focus({ direction = dir }))
     hl.bind(key("SHIFT + " .. k), hl.dsp.window.move({ direction = dir }))
     hl.bind(key("CTRL + " .. k),
-        hl.dsp.window.resize({ x = resize[k][1], y = resize[k][2] }),
+        hl.dsp.window.resize({ x = resize[k][1], y = resize[k][2], relative = true }),
         { repeating = true })
 end
 
