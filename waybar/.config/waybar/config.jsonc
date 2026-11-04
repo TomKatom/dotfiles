@@ -20,6 +20,7 @@
     "temperature",
     "hyprland/language",
     "idle_inhibitor",
+    "custom/dnd",
     "tray",
     "custom/power"
   ],
@@ -111,6 +112,12 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": { "activated": "󰅶", "deactivated": "󰾪" }
+  },
+  "custom/dnd": {
+    "exec": "~/.local/bin/dnd status",
+    "return-type": "json",
+    "signal": 8,
+    "on-click": "~/.local/bin/dnd"
   },
   "custom/power": {
     "format": "󰐥",
