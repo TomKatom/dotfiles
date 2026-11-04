@@ -13,9 +13,13 @@ Each top-level directory is a stow package that mirrors `$HOME`:
 | --------- | ------------------------------------------------------------------ |
 | `bat`     | `cat`/pager replacement (theme)                                    |
 | `eza`     | `ls` replacement (theme)                                           |
+| `fuzzel`  | Application launcher                                               |
 | `git`     | Git pager settings (delta); identity stays in untracked `~/.gitconfig` |
+| `gtk`     | GTK 3/4 settings (adw-gtk3-dark, Papirus icons) and Catppuccin CSS |
 | `hypr`    | Hyprland (Lua config + modules), hypridle, hyprlock, hyprpaper, hyprsunset |
+| `kitty`   | Terminal (config + Catppuccin theme)                               |
 | `mako`    | Notification daemon                                                |
+| `qt`      | Qt 6 theming via qt6ct (Fusion style, Catppuccin colors)           |
 | `starship`| Shell prompt                                                       |
 | `systemd` | User units (`cliphist.service`, `hyprland-session.target`)         |
 | `waybar`  | Status bar (`config.jsonc`, `style.css`)                           |
@@ -28,11 +32,12 @@ directories are real.
 
 Requires `stow` plus the programs the configs reference (Hyprland, waybar,
 cliphist, hyprpaper, hypridle, hyprsunset, hyprpolkitagent, kitty, fuzzel, thunar).
-The shell needs:
+The shell and theming need:
 
 ```sh
-sudo pacman -S --needed starship fzf zoxide eza bat fd ripgrep dust duf \
-    zsh-completions zsh-autosuggestions zsh-syntax-highlighting
+sudo pacman -S --needed zsh starship fzf zoxide eza bat fd ripgrep dust duf git-delta \
+    zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
+    qt6ct adw-gtk-theme papirus-icon-theme ttf-jetbrains-mono-nerd inter-font
 ```
 
 ```sh
