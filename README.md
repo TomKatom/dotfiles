@@ -38,6 +38,7 @@ The shell and theming need:
 sudo pacman -S --needed zsh starship fzf zoxide eza bat fd ripgrep dust duf git-delta \
     zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
     qt6ct adw-gtk-theme papirus-icon-theme ttf-jetbrains-mono-nerd inter-font
+paru -S --needed catppuccin-cursors-macchiato
 ```
 
 ```sh
