@@ -98,6 +98,7 @@ window#waybar.empty #window {
 #mpris { color: @pink; }
 #pulseaudio { color: @blue; }
 #network { color: @sapphire; }
+#network.lab { color: @teal; }
 #bluetooth { color: @sky; }
 #cpu { color: @green; }
 #memory { color: @yellow; }
