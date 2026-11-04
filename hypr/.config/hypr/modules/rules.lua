@@ -15,10 +15,10 @@ hl.window_rule({
     idle_inhibit = "fullscreen",
 })
 
--- Small utility windows float, centered.
+-- Small utility windows and portal file choosers float, centered.
 hl.window_rule({
     name = "float-utilities",
-    match = { class = "^(org\\.pulseaudio\\.pavucontrol|blueman-manager|nm-connection-editor)$" },
+    match = { class = "^(org\\.pulseaudio\\.pavucontrol|blueman-manager|nm-connection-editor|xdg-desktop-portal-gtk)$" },
     float = true,
     size = "900 600",
     center = true,
@@ -29,4 +29,25 @@ hl.window_rule({
     name = "float-satty",
     match = { class = "^(com\\.gabm\\.satty)$" },
     float = true,
+})
+
+hl.window_rule({
+    name = "float-bitwarden",
+    match = { class = "^(Bitwarden)$" },
+    float = true,
+    center = true,
+})
+
+hl.window_rule({
+    name = "float-thunar-progress",
+    match = { class = "^(thunar)$", title = "^(File Operation Progress)$" },
+    float = true,
+})
+
+hl.window_rule({
+    name = "pip-firefox",
+    match = { title = "^(Picture-in-Picture)$" },
+    float = true,
+    pin = true,
+    keep_aspect_ratio = true,
 })
