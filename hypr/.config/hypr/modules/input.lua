@@ -3,7 +3,7 @@
 hl.config({
     input = {
         kb_layout  = "us,il",
-	kb_variant = "colemak,",
+        kb_variant = "colemak,",
         kb_options = "grp:alt_shift_toggle",
 
         repeat_rate  = 40,   -- keys/sec while held
