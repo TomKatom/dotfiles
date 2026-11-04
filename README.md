@@ -21,6 +21,7 @@ Each top-level directory except `system/` is a stow package that mirrors `$HOME`
 | `kitty`   | Terminal (config + Catppuccin theme)                               |
 | `mako`    | Notification daemon                                                |
 | `nvim`    | Neovim: `vim.pack` plugins + lockfile, built-in LSP (`lsp/`), Telescope, gitsigns, fugitive |
+| `mpv`     | Video player (hwdec, gpu-next, Catppuccin colors)                  |
 | `qt`      | Qt 6 theming via qt6ct (Fusion style, Catppuccin colors)           |
 | `starship`| Shell prompt                                                       |
 | `systemd` | User units (`cliphist.service`, `solaar.service`, `hyprland-session.target`) |

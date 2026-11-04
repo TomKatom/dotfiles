@@ -17,6 +17,7 @@ PACKAGES=(
     kitty
     mako
     nvim
+    mpv
     ssh
     qt
     starship
