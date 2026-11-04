@@ -13,6 +13,7 @@ Each top-level directory except `system/` is a stow package that mirrors `$HOME`
 | --------- | ------------------------------------------------------------------ |
 | `bat`     | `cat`/pager replacement (theme)                                    |
 | `bin`     | Scripts for `~/.local/bin` (`powermenu`)                           |
+| `btop`    | Resource monitor (Catppuccin Macchiato theme)                      |
 | `eza`     | `ls` replacement (theme)                                           |
 | `fuzzel`  | Application launcher                                               |
 | `git`     | Git pager settings (delta); identity stays in untracked `~/.gitconfig` |
