@@ -7,7 +7,7 @@ Personal Linux desktop config (Hyprland on Wayland), managed with
 
 ## Layout
 
-Each top-level directory is a stow package that mirrors `$HOME`:
+Each top-level directory except `system/` is a stow package that mirrors `$HOME`:
 
 | Package   | Contents                                                           |
 | --------- | ------------------------------------------------------------------ |
@@ -28,29 +28,28 @@ Each top-level directory is a stow package that mirrors `$HOME`:
 | `zsh`     | `~/.zshenv` (sets `ZDOTDIR`) + modular config in `~/.config/zsh`   |
 
 `.stowrc` sets `--target=~` and `--no-folding`, so only files are symlinked and
-directories are real.
+directories are real. `system/` mirrors `/` instead and is copied, not linked
+(see below).
 
 ## Install
 
-Requires `stow` plus the programs the configs reference (Hyprland, waybar,
-cliphist, hyprpaper, hypridle, hyprsunset, hyprpolkitagent, kitty, fuzzel, thunar).
-The shell and theming need:
-
-```sh
-sudo pacman -S --needed zsh starship fzf zoxide eza bat fd ripgrep dust duf git-delta \
-    zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
-    qt6ct adw-gtk-theme papirus-icon-theme ttf-jetbrains-mono-nerd inter-font
-paru -S --needed catppuccin-cursors-macchiato
-```
+Requires an Arch install with `git` and, for AUR entries, `paru`. Everything the
+configs use is listed in [`packages.txt`](packages.txt).
 
 ```sh
 git clone https://github.com/TomKatom/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-./install.sh
+./install.sh --system
 ```
 
+`--system` (needs sudo) first installs any missing `packages.txt` entries, copies
+`system/` (greetd config) to `/` as root-owned files, showing a diff and asking
+before each changed file, and enables `greetd.service`. Plain `./install.sh` only
+links the dotfiles and enables the user services.
+
 `install.sh` is idempotent: re-run it after every pull or when adding a package
-or service. Then log out and back in to start the session target.
+or service (with `--system` if `packages.txt` or `system/` changed). Then log out
+and back in to start the session target.
 
 The lab WireGuard tunnel is a NetworkManager connection. Its keys are never in
 the repo: put the wg-quick file at `/etc/wireguard/lab.conf` (root-only) before
@@ -61,6 +60,9 @@ running `install.sh`, which imports it once and sets it to autoconnect.
 - **Package:** create `<name>/.config/...`, add `<name>` to `PACKAGES` in `install.sh`.
 - **Service:** add the unit under `systemd/.config/systemd/user/`, add it to `SERVICES`
   in `install.sh` (it needs `WantedBy=graphical-session.target`).
+- **Program:** add it to `packages.txt` (kept sorted by pre-commit).
+- **System file:** put it under `system/` at its path from `/`. A system unit also goes
+  in `SYSTEM_SERVICES` in `install.sh`.
 
 ## Development
 
@@ -71,6 +73,7 @@ pre-commit run --all-files
 ```
 
 CI (GitHub Actions, hosted runners) runs the same hooks plus a Lua syntax check,
-a `stow --simulate` dry run, a check that `install.sh` lists every package, and
+a `stow --simulate` dry run, a check that `install.sh` lists every package (all
+top-level dirs except `system/`), and
 `systemd-analyze verify` on the units. Changes to `master` go through pull
 requests with squash merge.
