@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Change the default sink/source with wpctl, then show the result as an in-place mako OSD.
+# Usage: volume raise|lower|mute|mic-mute
+set -euo pipefail
+
+STEP=5%
+SINK=@DEFAULT_AUDIO_SINK@
+SOURCE=@DEFAULT_AUDIO_SOURCE@
+
+# Prints "<percent> <muted 0|1>" for a wpctl target.
+read_state() {
+    local out muted=0
+    out=$(wpctl get-volume "$1")
+    [[ $out == *'[MUTED]'* ]] && muted=1
+    awk -v muted="$muted" '{ printf "%d %d\n", $2 * 100 + 0.5, muted }' <<<"$out"
+}
+
+osd() {
+    local title=$1 icon=$2 percent=$3 body=$4
+    notify-send -a volume-osd -i "$icon" \
+        -h string:x-canonical-private-synchronous:volume-osd \
+        -h "int:value:$percent" "$title" "$body"
+}
+
+show_sink() {
+    local percent muted icon
+    read -r percent muted < <(read_state "$SINK")
+    if ((muted)); then
+        osd Volume audio-volume-muted "$percent" Muted
+        return
+    fi
+    if ((percent >= 66)); then
+        icon=audio-volume-high
+    elif ((percent >= 33)); then
+        icon=audio-volume-medium
+    else
+        icon=audio-volume-low
+    fi
+    osd Volume "$icon" "$percent" "$percent%"
+}
+
+show_source() {
+    local percent muted
+    read -r percent muted < <(read_state "$SOURCE")
+    if ((muted)); then
+        osd Microphone microphone-sensitivity-muted "$percent" Muted
+    else
+        osd Microphone microphone-sensitivity-high "$percent" "$percent%"
+    fi
+}
+
+case ${1:-} in
+raise)
+    wpctl set-volume -l 1.0 "$SINK" "$STEP+"
+    show_sink
+    ;;
+lower)
+    wpctl set-volume -l 1.0 "$SINK" "$STEP-"
+    show_sink
+    ;;
+mute)
+    wpctl set-mute "$SINK" toggle
+    show_sink
+    ;;
+mic-mute)
+    wpctl set-mute "$SOURCE" toggle
+    show_source
+    ;;
+*)
+    echo "usage: ${0##*/} raise|lower|mute|mic-mute" >&2
+    exit 2
+    ;;
+esac
