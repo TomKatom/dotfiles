@@ -29,6 +29,7 @@ hyprsunset
 inter-font
 kitty
 mako
+mpv
 network-manager-applet
 networkmanager
 noto-fonts
