@@ -20,7 +20,8 @@
     "temperature",
     "hyprland/language",
     "idle_inhibitor",
-    "tray"
+    "tray",
+    "custom/power"
   ],
 
   "hyprland/workspaces": {
@@ -110,6 +111,11 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": { "activated": "󰅶", "deactivated": "󰾪" }
+  },
+  "custom/power": {
+    "format": "󰐥",
+    "tooltip": false,
+    "on-click": "~/.local/bin/powermenu"
   },
   "tray": {
     "icon-size": 16,

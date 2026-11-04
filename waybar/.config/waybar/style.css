@@ -53,6 +53,7 @@ tooltip {
 #temperature,
 #language,
 #idle_inhibitor,
+#custom-power,
 #tray {
   background: @base;
   border-radius: 6px;
@@ -106,6 +107,7 @@ window#waybar.empty #window {
 #temperature { color: @peach; }
 #language { color: @teal; }
 #idle_inhibitor { color: @overlay0; }
+#custom-power { color: @red; }
 
 #pulseaudio.muted,
 #network.disconnected,

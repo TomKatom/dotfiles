@@ -7,6 +7,7 @@ local mod = "SUPER"
 local terminal = "kitty"
 local files    = "thunar"
 local launcher = "pkill -x fuzzel || fuzzel"
+local powermenu = "~/.local/bin/powermenu"  -- ~/.local/bin is not on the compositor's PATH
 
 local function key(k) return mod .. " + " .. k end
 
@@ -24,7 +25,8 @@ hl.bind("SHIFT + Print", hl.dsp.exec_cmd([[grim -t ppm - | satty --filename - ]]
 
 -- Session ------------------------------------------------------------------
 hl.bind(key("Escape"),    hl.dsp.exec_cmd("loginctl lock-session"))  -- handled by hypridle
-hl.bind(key("SHIFT + M"), hl.dsp.exit())
+hl.bind(key("SHIFT + M"), hl.dsp.exec_cmd("hyprshutdown"))
+hl.bind(key("X"),         hl.dsp.exec_cmd("pkill -x fuzzel || " .. powermenu))
 
 -- Windows ------------------------------------------------------------------
 hl.bind(key("Q"), hl.dsp.window.close())

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+choice=$(printf '%s\n' "󰌾 Lock" "󰤄 Suspend" "󰍃 Logout" "󰜉 Reboot" "󰐥 Poweroff" |
+    fuzzel --dmenu --lines 5 --width 16 --prompt '') || exit 0
+
+case "${choice#* }" in
+Lock) loginctl lock-session ;;
+Suspend) systemctl suspend ;;
+Logout) hyprshutdown ;;
+Reboot) hyprshutdown --post-cmd 'systemctl reboot' ;;
+Poweroff) hyprshutdown --post-cmd 'systemctl poweroff' ;;
+esac
