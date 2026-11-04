@@ -26,6 +26,7 @@ hyprpicker
 hyprpolkitagent
 hyprshutdown
 hyprsunset
+imv
 inter-font
 kitty
 mako

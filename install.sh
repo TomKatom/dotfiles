@@ -14,6 +14,7 @@ PACKAGES=(
     git
     gtk
     hypr
+    imv
     kitty
     mako
     ssh
