@@ -59,6 +59,8 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xdg-user-dirs
 xdg-utils
+zathura
+zathura-pdf-mupdf
 zoxide
 zsh
 zsh-autosuggestions

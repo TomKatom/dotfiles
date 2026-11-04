@@ -22,6 +22,7 @@ PACKAGES=(
     systemd
     waybar
     xdg
+    zathura
     zsh
 )
 
