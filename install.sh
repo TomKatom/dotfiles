@@ -36,6 +36,22 @@ SERVICES=(
 
 stow --restow "${PACKAGES[@]}"
 
+# WireGuard tunnel to the lab, owned by NetworkManager. Its keys stay out of the repo: the
+# profile is imported once from the wg-quick file, then lives in NM's root-only keyfile.
+WG_LAB=lab
+WG_LAB_CONF="/etc/wireguard/$WG_LAB.conf"
+if ! nmcli connection show "$WG_LAB" &>/dev/null; then
+    if sudo test -f "$WG_LAB_CONF"; then
+        sudo nmcli connection import type wireguard file "$WG_LAB_CONF"
+    else
+        echo "Skipping WireGuard: $WG_LAB_CONF not found." >&2
+    fi
+fi
+if nmcli connection show "$WG_LAB" &>/dev/null &&
+    [[ "$(nmcli -g connection.autoconnect connection show "$WG_LAB")" != yes ]]; then
+    sudo nmcli connection modify "$WG_LAB" connection.autoconnect yes
+fi
+
 mkdir -p ~/Pictures/Screenshots
 
 systemctl --user daemon-reload

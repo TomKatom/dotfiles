@@ -44,6 +44,10 @@ cd ~/dotfiles
 `install.sh` is idempotent: re-run it after every pull or when adding a package
 or service. Then log out and back in to start the session target.
 
+The lab WireGuard tunnel is a NetworkManager connection. Its keys are never in
+the repo: put the wg-quick file at `/etc/wireguard/lab.conf` (root-only) before
+running `install.sh`, which imports it once and sets it to autoconnect.
+
 ## Adding things
 
 - **Package:** create `<name>/.config/...`, add `<name>` to `PACKAGES` in `install.sh`.
