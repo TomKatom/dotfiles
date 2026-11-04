@@ -14,6 +14,7 @@ PACKAGES=(
     hypr
     kitty
     mako
+    ssh
     qt
     starship
     systemd
