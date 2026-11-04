@@ -13,6 +13,7 @@
     "mpris",
     "pulseaudio",
     "network",
+    "network#lab",
     "bluetooth",
     "cpu",
     "memory",
@@ -65,6 +66,14 @@
     "format-disconnected": "󰖪 offline",
     "tooltip-format": "{ifname}  {ipaddr}\n{bandwidthDownBytes}  {bandwidthUpBytes}",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}  {ipaddr}"
+  },
+  "network#lab": {
+    "interface": "lab",
+    "format": "󰌘 lab",
+    "format-disconnected": "󰌙 lab",
+    "tooltip-format": "{ifname}  {ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "lab tunnel down",
+    "on-click": "nmcli -g GENERAL.STATE connection show lab | grep -q activated && nmcli connection down lab || nmcli connection up lab"
   },
   "bluetooth": {
     "format": "󰂯",
