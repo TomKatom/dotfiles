@@ -29,3 +29,7 @@ default-timeout=0
 
 [grouped]
 format=<b>%s</b> (%g)\n%b
+
+# Keep last: later criteria sections override earlier ones.
+[mode=do-not-disturb]
+invisible=1
