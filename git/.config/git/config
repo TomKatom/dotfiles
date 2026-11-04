@@ -9,3 +9,26 @@
 	syntax-theme = Catppuccin Macchiato
 [merge]
 	conflictStyle = zdiff3
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+	autoSquash = true
+	updateRefs = true
+[push]
+	autoSetupRemote = true
+[fetch]
+	prune = true
+[rerere]
+	enabled = true
+[diff]
+	algorithm = histogram
+	colorMoved = default
+[branch]
+	sort = -committerdate
+[tag]
+	sort = -version:refname
+[commit]
+	verbose = true
+[help]
+	autocorrect = prompt
