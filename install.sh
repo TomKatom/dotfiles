@@ -19,6 +19,7 @@ PACKAGES=(
     starship
     systemd
     waybar
+    xdg
     zsh
 )
 
