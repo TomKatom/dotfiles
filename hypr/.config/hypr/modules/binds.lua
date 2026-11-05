@@ -23,6 +23,12 @@ local shot_out = [[--output-filename ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M%
 hl.bind("Print",         hl.dsp.exec_cmd([[grim -g "$(slurp -d)" -t ppm - | satty --filename - ]] .. shot_out))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd([[grim -t ppm - | satty --filename - ]] .. shot_out))
 
+-- Notifications (N family) ---------------------------------------------------
+hl.bind(key("N"),          hl.dsp.exec_cmd("makoctl dismiss"))
+hl.bind(key("SHIFT + N"),  hl.dsp.exec_cmd("makoctl dismiss --all"))
+hl.bind(key("CTRL + N"),   hl.dsp.exec_cmd("makoctl restore"))
+hl.bind(key("ALT + N"),    hl.dsp.exec_cmd("~/.local/bin/dnd"))  -- explicit path: the session PATH may lack ~/.local/bin
+
 -- Session ------------------------------------------------------------------
 hl.bind(key("Escape"),    hl.dsp.exec_cmd("loginctl lock-session"))  -- handled by hypridle
 hl.bind(key("SHIFT + M"), hl.dsp.exec_cmd("hyprshutdown"))
