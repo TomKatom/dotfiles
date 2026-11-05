@@ -1,3 +1,4 @@
+7zip
 adw-gtk-theme
 bat
 blueman
@@ -52,6 +53,7 @@ stow
 thunar
 ttf-jetbrains-mono-nerd
 tumbler
+unzip
 waybar
 wireplumber
 wl-clipboard
