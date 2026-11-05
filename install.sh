@@ -16,6 +16,7 @@ PACKAGES=(
     hypr
     kitty
     mako
+    nvim
     ssh
     qt
     starship
