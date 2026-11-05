@@ -42,6 +42,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 playerctl
+podman
 qt5-wayland
 qt6-wayland
 qt6ct

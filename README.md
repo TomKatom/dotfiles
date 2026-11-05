@@ -13,6 +13,7 @@ Each top-level directory except `system/` is a stow package that mirrors `$HOME`
 | --------- | ------------------------------------------------------------------ |
 | `bat`     | `cat`/pager replacement (theme)                                    |
 | `bin`     | Scripts for `~/.local/bin` (`powermenu`)                           |
+| `containers` | Podman storage (data disk) and registries                      |
 | `eza`     | `ls` replacement (theme)                                           |
 | `fuzzel`  | Application launcher                                               |
 | `git`     | Git pager settings (delta); identity stays in untracked `~/.gitconfig` |
@@ -58,6 +59,7 @@ running `install.sh`, which imports it once and sets it to autoconnect.
 ## Adding things
 
 - **Package:** create `<name>/.config/...`, add `<name>` to `PACKAGES` in `install.sh`.
+- **Socket:** add it to `SOCKETS` in `install.sh` (skipped until its package is installed).
 - **Service:** add the unit under `systemd/.config/systemd/user/`, add it to `SERVICES`
   in `install.sh` (it needs `WantedBy=graphical-session.target`).
 - **Program:** add it to `packages.txt` (kept sorted by pre-commit).

@@ -17,3 +17,6 @@ hl.env("QT_QPA_PLATFORM", "wayland;xcb", true)
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1", true)
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct", true)
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto", true)
+
+-- Docker API for devcontainer tooling, served by podman.socket
+hl.env("DOCKER_HOST", "unix://" .. os.getenv("XDG_RUNTIME_DIR") .. "/podman/podman.sock", true)

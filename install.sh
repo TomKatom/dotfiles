@@ -9,6 +9,7 @@ cd "$(dirname "$(realpath "$0")")"
 PACKAGES=(
     bat
     bin
+    containers
     eza
     fuzzel
     git
@@ -35,6 +36,11 @@ SERVICES=(
     hyprpaper.service
     hypridle.service
     hyprsunset.service
+)
+
+# User sockets, activated on demand (WantedBy=sockets.target, not the graphical session).
+SOCKETS=(
+    podman.socket
 )
 
 # System units enabled by --system, shipped by a package or under system/etc/systemd/system/.
@@ -112,5 +118,12 @@ mkdir -p ~/Pictures/Screenshots
 
 systemctl --user daemon-reload
 systemctl --user enable "${SERVICES[@]}"
+for socket in "${SOCKETS[@]}"; do
+    if systemctl --user cat "$socket" &>/dev/null; then
+        systemctl --user enable --now "$socket"
+    else
+        echo "Skipping $socket: unit not found (package not installed?)." >&2
+    fi
+done
 
 echo "Done. Log out and back in (or reboot) to start the session target."
