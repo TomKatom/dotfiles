@@ -30,7 +30,7 @@ Used for C++ development, low-level research and general productivity.
 - **Audio:** pipewire, pipewire-pulse, pipewire-alsa, pipewire-jack, wireplumber, pavucontrol
 - **Network/BT:** NetworkManager (iwd backend), network-manager-applet, bluez, bluez-utils, blueman
 - **Clipboard:** wl-clipboard + cliphist · **Screenshots:** grim + slurp + satty
-- **Misc:** brightnessctl, playerctl, gnome-keyring + libsecret, xdg-user-dirs, xdg-utils
+- **Misc:** playerctl, gnome-keyring + libsecret, xdg-user-dirs, xdg-utils
 - **Qt:** qt5-wayland, qt6-wayland
 - **Fonts:** noto-fonts, noto-fonts-emoji, ttf-jetbrains-mono-nerd, inter-font
 - **Theming:** adw-gtk-theme, papirus-icon-theme, nwg-look
