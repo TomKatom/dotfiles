@@ -61,5 +61,10 @@ jobs:
           diff <(echo "$expected") <(echo "$PACKAGES" | tr ' ' '\n')
       - name: systemd unit verify
         run: |
-          find . -path ./.git -prune -o \( -name '*.service' -o -name '*.target' \) -print0 \
-            | xargs -0 systemd-analyze --user verify --no-pager || echo "::warning::systemd-analyze reported issues"
+          verify() {
+            find "$2" \( -name '*.service' -o -name '*.target' \) -print0 \
+              | xargs -0 -r systemd-analyze "$1" verify --no-pager \
+              || echo "::warning::systemd-analyze $1 reported issues in $2/"
+          }
+          verify --user systemd
+          verify --system system

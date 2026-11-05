@@ -1,0 +1,14 @@
+# /etc/vtrgb is catppuccin/tty themes/macchiato.txt (6dd8b99) in setvtrgb's format.
+[Unit]
+Description=Set Catppuccin Macchiato console palette
+Before=greetd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/setvtrgb /etc/vtrgb
+CapabilityBoundingSet=CAP_SYS_TTY_CONFIG
+# Oneshots have no start timeout by default, and greetd waits for this one.
+TimeoutStartSec=5s
+
+[Install]
+WantedBy=multi-user.target

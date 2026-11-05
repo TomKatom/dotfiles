@@ -43,8 +43,9 @@ cd ~/dotfiles
 ```
 
 `--system` (needs sudo) first installs any missing `packages.txt` entries, copies
-`system/` (greetd config) to `/` as root-owned files, showing a diff and asking
-before each changed file, and enables `greetd.service`. Plain `./install.sh` only
+`system/` (greetd config, Catppuccin console palette) to `/` as root-owned files,
+showing a diff and asking before each changed file, and enables `greetd.service`
+and `setvtrgb.service`. Plain `./install.sh` only
 links the dotfiles and enables the user services.
 
 `install.sh` is idempotent: re-run it after every pull or when adding a package
