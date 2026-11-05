@@ -48,9 +48,12 @@ Used for C++ development, low-level research and general productivity.
 
 ## Repo layout
 
-- Each top-level directory is a GNU Stow package mirroring `$HOME` (`.stowrc`: target `~`, `--no-folding`).
+- Each top-level directory except `system/` is a GNU Stow package mirroring `$HOME` (`.stowrc`: target `~`, `--no-folding`).
 - `install.sh` is the idempotent entry point: stows `PACKAGES` and enables user `SERVICES`.
   Adding a package or service means adding it to those arrays.
+- `install.sh --system` also installs `packages.txt` (sorted; repo + AUR via paru), copies
+  `system/` (mirrors `/`, not a stow package) to `/` as root-owned files and enables
+  `SYSTEM_SERVICES`.
 - `hypr/`: `hyprland.lua` only `require()`s modules under `modules/`, one concern per module.
   Each module runs in its own scope — modules cannot share locals.
 - `systemd/`: user units. Session services hang off `graphical-session.target`

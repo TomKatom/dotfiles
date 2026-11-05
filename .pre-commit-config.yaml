@@ -11,6 +11,10 @@ repos:
         args: [--fix=lf]
       - id: check-yaml
       - id: check-json
+      - id: check-toml
+      - id: file-contents-sorter
+        files: ^packages\.txt$
+        args: [--unique]
       - id: check-merge-conflict
       - id: check-added-large-files
       - id: check-executables-have-shebangs
