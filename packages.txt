@@ -3,6 +3,7 @@ bat
 blueman
 bluez
 bluez-utils
+btop
 catppuccin-cursors-macchiato
 cliphist
 duf

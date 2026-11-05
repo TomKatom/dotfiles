@@ -9,6 +9,7 @@ cd "$(dirname "$(realpath "$0")")"
 PACKAGES=(
     bat
     bin
+    btop
     eza
     fuzzel
     git
