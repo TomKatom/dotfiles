@@ -20,6 +20,7 @@ Each top-level directory except `system/` is a stow package that mirrors `$HOME`
 | `hypr`    | Hyprland (Lua config + modules), hypridle, hyprlock, hyprpaper, hyprsunset |
 | `kitty`   | Terminal (config + Catppuccin theme)                               |
 | `mako`    | Notification daemon                                                |
+| `mpv`     | Video player (hwdec, gpu-next, Catppuccin colors)                  |
 | `qt`      | Qt 6 theming via qt6ct (Fusion style, Catppuccin colors)           |
 | `starship`| Shell prompt                                                       |
 | `systemd` | User units (`cliphist.service`, `hyprland-session.target`)         |

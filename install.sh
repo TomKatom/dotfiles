@@ -16,6 +16,7 @@ PACKAGES=(
     hypr
     kitty
     mako
+    mpv
     ssh
     qt
     starship
