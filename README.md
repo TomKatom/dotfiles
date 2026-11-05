@@ -25,6 +25,7 @@ Each top-level directory except `system/` is a stow package that mirrors `$HOME`
 | `systemd` | User units (`cliphist.service`, `hyprland-session.target`)         |
 | `waybar`  | Status bar (`config.jsonc`, `style.css`)                           |
 | `xdg`     | Default applications (`mimeapps.list`)                             |
+| `zathura` | Document viewer (Catppuccin colors; PDF via zathura-pdf-mupdf)    |
 | `zsh`     | `~/.zshenv` (sets `ZDOTDIR`) + modular config in `~/.config/zsh`   |
 
 `.stowrc` sets `--target=~` and `--no-folding`, so only files are symlinked and
