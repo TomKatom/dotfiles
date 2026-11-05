@@ -27,5 +27,12 @@ default-timeout=3000
 border-color=#ed8796
 default-timeout=0
 
+[app-name=volume-osd]
+anchor=center
+width=240
+height=90
+default-timeout=1000
+history=0
+
 [grouped]
 format=<b>%s</b> (%g)\n%b
