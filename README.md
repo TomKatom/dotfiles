@@ -12,6 +12,7 @@ Each top-level directory is a stow package that mirrors `$HOME`:
 | Package   | Contents                                                           |
 | --------- | ------------------------------------------------------------------ |
 | `bat`     | `cat`/pager replacement (theme)                                    |
+| `bin`     | Scripts for `~/.local/bin` (`powermenu`)                           |
 | `eza`     | `ls` replacement (theme)                                           |
 | `fuzzel`  | Application launcher                                               |
 | `git`     | Git pager settings (delta); identity stays in untracked `~/.gitconfig` |
