@@ -57,6 +57,7 @@ satty
 shellcheck
 shfmt
 slurp
+solaar
 starship
 stow
 thunar
