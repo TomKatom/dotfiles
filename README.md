@@ -23,7 +23,7 @@ Each top-level directory except `system/` is a stow package that mirrors `$HOME`
 | `nvim`    | Neovim: `vim.pack` plugins + lockfile, built-in LSP (`lsp/`), Telescope, gitsigns, fugitive |
 | `qt`      | Qt 6 theming via qt6ct (Fusion style, Catppuccin colors)           |
 | `starship`| Shell prompt                                                       |
-| `systemd` | User units (`cliphist.service`, `hyprland-session.target`)         |
+| `systemd` | User units (`cliphist.service`, `solaar.service`, `hyprland-session.target`) |
 | `waybar`  | Status bar (`config.jsonc`, `style.css`)                           |
 | `xdg`     | Default applications (`mimeapps.list`)                             |
 | `zsh`     | `~/.zshenv` (sets `ZDOTDIR`) + modular config in `~/.config/zsh`   |

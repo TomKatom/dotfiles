@@ -36,6 +36,7 @@ SERVICES=(
     hyprpaper.service
     hypridle.service
     hyprsunset.service
+    solaar.service
 )
 
 # System units enabled by --system, shipped by a package or under system/etc/systemd/system/.
