@@ -47,6 +47,7 @@ pipewire-jack
 pipewire-pulse
 playerctl
 pyright
+qbittorrent
 qt5-wayland
 qt6-wayland
 qt6ct
