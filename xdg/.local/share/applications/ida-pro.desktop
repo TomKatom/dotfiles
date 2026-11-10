@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=IDA Pro 9.5
+GenericName=Disassembler
+Comment=Interactive disassembler and debugger
+Exec=/opt/ida-pro-9.5/ida %f
+Icon=/opt/ida-pro-9.5/appico.png
+Terminal=false
+Categories=Development;Debugger;
+StartupWMClass=ida
