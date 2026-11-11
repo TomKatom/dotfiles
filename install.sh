@@ -42,6 +42,7 @@ SERVICES=(
 # System units enabled by --system, shipped by a package or under system/etc/systemd/system/.
 SYSTEM_SERVICES=(
     greetd.service
+    setvtrgb.service
 )
 
 install_packages() {
