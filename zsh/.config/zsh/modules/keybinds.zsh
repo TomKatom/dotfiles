@@ -11,13 +11,19 @@ typeset -A keys=(
     khome beginning-of-line
     kend  end-of-line
     kdch1 delete-char
+    kDC5  kill-word
     kLFT5 backward-word
     kRIT5 forward-word
+    kcbt  reverse-menu-complete
 )
 for cap widget in ${(kv)keys}; do
     [[ -n $terminfo[$cap] ]] && bindkey $terminfo[$cap] $widget
 done
+[[ -n $terminfo[kcbt] ]] && bindkey -M menuselect $terminfo[kcbt] reverse-menu-complete
 unset keys cap widget
+
+# Ctrl+Backspace sends ^H, unless the terminal uses ^H for plain Backspace.
+[[ $terminfo[kbs] == $'\b' ]] || bindkey '^H' backward-kill-word
 
 bindkey '^X^E' edit-command-line
 
