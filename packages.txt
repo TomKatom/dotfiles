@@ -28,6 +28,7 @@ hyprpicker
 hyprpolkitagent
 hyprshutdown
 hyprsunset
+imv
 inter-font
 kitty
 lua-language-server

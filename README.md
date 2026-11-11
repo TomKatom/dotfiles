@@ -18,6 +18,7 @@ Each top-level directory except `system/` is a stow package that mirrors `$HOME`
 | `git`     | Git pager settings (delta); identity stays in untracked `~/.gitconfig` |
 | `gtk`     | GTK 3/4 settings (adw-gtk3-dark, Papirus icons) and Catppuccin CSS |
 | `hypr`    | Hyprland (Lua config + modules), hypridle, hyprlock, hyprpaper, hyprsunset |
+| `imv`     | Image viewer (Catppuccin colors)                                   |
 | `kitty`   | Terminal (config + Catppuccin theme)                               |
 | `mako`    | Notification daemon                                                |
 | `nvim`    | Neovim: `vim.pack` plugins + lockfile, built-in LSP (`lsp/`), Telescope, gitsigns, fugitive |
