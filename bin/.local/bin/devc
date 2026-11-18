@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# devcontainer CLI for the enclosing project, on rootless podman.
+# PODMAN_USERNS=keep-id maps your uid into the container, so devcontainer.json needs no
+# podman-only runArgs and stays usable with Docker elsewhere.
+set -euo pipefail
+
+usage() {
+    echo "usage: ${0##*/} [up|rebuild|down|<cmd> [args...]]   (no args: shell)" >&2
+    exit 2
+}
+
+# Nearest ancestor with a devcontainer config; nvim's clangd config uses the same rule.
+root=$PWD
+until [[ -e $root/.devcontainer || -e $root/.devcontainer.json ]]; do
+    if [[ $root == / ]]; then
+        echo "${0##*/}: no .devcontainer/ or .devcontainer.json above $PWD" >&2
+        exit 1
+    fi
+    root=$(dirname "$root")
+done
+
+export PODMAN_USERNS=keep-id
+
+case "${1-}" in
+up)
+    shift
+    exec devcontainer up --workspace-folder "$root" "$@"
+    ;;
+rebuild)
+    shift
+    exec devcontainer up --workspace-folder "$root" --remove-existing-container "$@"
+    ;;
+down)
+    mapfile -t ids < <(podman ps -q --filter "label=devcontainer.local_folder=$root")
+    if ((${#ids[@]})); then
+        podman stop "${ids[@]}"
+    fi
+    ;;
+-h | --help) usage ;;
+"")
+    # shellcheck disable=SC2016 # expanded inside the container
+    exec devcontainer exec --workspace-folder "$root" sh -c 'exec "$(command -v bash || echo sh)" -l'
+    ;;
+*) exec devcontainer exec --workspace-folder "$root" "$@" ;;
+esac

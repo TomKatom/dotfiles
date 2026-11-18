@@ -12,7 +12,7 @@ Each top-level directory except `system/` is a stow package that mirrors `$HOME`
 | Package   | Contents                                                           |
 | --------- | ------------------------------------------------------------------ |
 | `bat`     | `cat`/pager replacement (theme)                                    |
-| `bin`     | Scripts for `~/.local/bin` (`powermenu`, `dnd`)                    |
+| `bin`     | Scripts for `~/.local/bin` (`powermenu`, `dnd`, `devc`)            |
 | `eza`     | `ls` replacement (theme)                                           |
 | `fuzzel`  | Application launcher                                               |
 | `git`     | Git pager settings (delta); identity stays in untracked `~/.gitconfig` |
@@ -56,6 +56,27 @@ and back in to start the session target.
 The lab WireGuard tunnel is a NetworkManager connection. Its keys are never in
 the repo: put the wg-quick file at `/etc/wireguard/lab.conf` (root-only) before
 running `install.sh`, which imports it once and sets it to autoconnect.
+
+## Devcontainers
+
+Containers run on rootless Podman. Projects are driven by the devcontainer CLI through
+`devc`, run from anywhere inside a project with `.devcontainer/` (or `.devcontainer.json`):
+
+```sh
+devc up          # create/start (devc rebuild recreates it)
+devc             # login shell inside
+devc make -j     # run a command inside
+devc down        # stop it
+```
+
+`devc` sets `PODMAN_USERNS=keep-id`, so your uid is the same inside and files in the
+workspace stay yours. `devcontainer.json` needs no podman-only `runArgs` and still works
+with Docker. Compose-based configs go through the podman socket, which ignores that
+variable: give the service `userns_mode: keep-id` in a local compose override.
+
+nvim stays on the host. While a project's devcontainer runs, clangd starts inside it
+(`lsp/clangd.lua`), so it sees the container's compiler and headers. Paths are mapped
+for the workspace only, so jumping into a system header opens the host's copy.
 
 ## Adding things
 
