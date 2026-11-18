@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Run a command in a throwaway container, e.g. a binary against another distro's glibc.
+# Only $PWD is mounted (read-only unless --rw), there is no network unless --net, all
+# capabilities are dropped and it runs as your uid. Not a sandbox for hostile samples: use a VM.
+set -euo pipefail
+
+usage() {
+    echo "usage: ${0##*/} [--net] [--rw] <image> <cmd> [args...]" >&2
+    exit 2
+}
+
+network=none
+mode=ro
+while [[ $# -gt 0 ]]; do
+    case $1 in
+    --net) network=pasta ;;
+    --rw) mode=rw ;;
+    --)
+        shift
+        break
+        ;;
+    -*) usage ;;
+    *) break ;;
+    esac
+    shift
+done
+[[ $# -ge 2 ]] || usage
+image=$1
+shift
+
+if [[ $PWD == / || $PWD == "$HOME" ]]; then
+    echo "${0##*/}: refusing to mount $PWD; cd into a project or scratch directory" >&2
+    exit 1
+fi
+
+tty=()
+[[ -t 0 && -t 1 ]] && tty=(--tty)
+
+exec podman run --rm --interactive "${tty[@]}" --init \
+    --userns=keep-id --cap-drop=all --security-opt=no-new-privileges \
+    --network="$network" --read-only \
+    --volume="$PWD:$PWD:$mode" --workdir="$PWD" \
+    "$image" "$@"
