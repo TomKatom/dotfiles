@@ -47,6 +47,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 playerctl
+podman
 pyright
 qbittorrent
 qt5-wayland
